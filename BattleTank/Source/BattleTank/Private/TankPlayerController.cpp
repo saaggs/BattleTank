@@ -50,7 +50,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector OutHitLocation;  // Out parameter
 	if (GetSightRayHitLocation(OutHitLocation)) // Has "side-effect, is going to line trace"
 	{
-		UE_LOG(LogTemp, Warning, TEXT("OutHitLocation: %s"), *OutHitLocation.ToString());
+		//UE_LOG(LogTemp, Warning, TEXT("OutHitLocation: %s"), *OutHitLocation.ToString());
 
 		// Get world location of linetrace through crosshair
 
@@ -63,6 +63,13 @@ void ATankPlayerController::AimTowardsCrosshair()
 // Get world location of linetrace through crosshair, true if hits landscape
 bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
 {
-	OutHitLocation = FVector(1.0);
+	// Find the crosshair position in pizel coordinates
+	int32 ViewportSizeX, ViewportSizeY;
+	GetViewportSize(ViewportSizeX, ViewportSizeY);
+	auto ScreenLocation = FVector2D(ViewportSizeX * CrossHairXLocation, ViewportSizeY * CrossHairYLocation);
+	// UE_LOG(LogTemp, Warning, TEXT("ScreenLocation: %s"), *ScreenLocation.ToString());
+
+	// "De-project" (Unreal Term) the screen position of the crosshair to a world direction
+	// Line-trace along that look direction, and see what we hit (up to max range)
 	return true;
 }
