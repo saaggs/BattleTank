@@ -50,7 +50,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector OutHitLocation;  // Out parameter
 	if (GetSightRayHitLocation(OutHitLocation)) // Has "side-effect, is going to line trace"
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Hit Location: %s"), *OutHitLocation.ToString());
+		GetControlledTank()->AimAt(OutHitLocation);
 
 		// Get world location of linetrace through crosshair
 

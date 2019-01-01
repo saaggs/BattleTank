@@ -36,6 +36,22 @@ void ATankAIController::BeginPlay()
 
 }
 
+void ATankAIController::Tick(float DeltaTime)
+{
+	// Super
+	Super::Tick(DeltaTime);
+	// UE_LOG(LogTemp, Warning, TEXT("Player controller ticking"));
+
+	if (GetPlayerTank())
+	{
+		// TODO Move towards the player
+
+		// Aim towards the player
+		GetAIControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+
+		// Fire if ready
+	}
+}
 
 ATank* ATankAIController::GetAIControlledTank() const
 {
