@@ -1,11 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-#include "TankAimingComponent.h"
+//#include "TankAimingComponent.h"  // This include is a forward declaration below
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h" // Put new includes above this
 
+// Forward Declarations
 class UTankBarrel; // Forward Declaration to import class
+class UTankAimingComponent;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -29,7 +31,8 @@ private:
 	virtual void BeginPlay() override;
 	
 	// Called every frame
-	virtual void Tick( float DeltaSeconds ) override;
+	// This component doesn't need to tick
+	//virtual void Tick( float DeltaSeconds ) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;

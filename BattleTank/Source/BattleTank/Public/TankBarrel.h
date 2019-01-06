@@ -16,7 +16,8 @@ class BATTLETANK_API UTankBarrel : public UStaticMeshComponent
 	GENERATED_BODY()
 	
 public:
-	void Elevate(float DegreesPerSecond);
+	// -1 is max downward movement and +1 is max up movement
+	void Elevate(float RelativeSpeed);
 
 private:
 	// UPROPERTY() makes the varibale below show up in the Unreal Editor Blueprint
@@ -27,6 +28,6 @@ private:
 	float MaxElevationDegrees = 40;
 
 	UPROPERTY(EditAnywhere, Category = Setup)
-	float MinElevationDegrees = 0;
+	float MinElevationDegrees = 0 ;
 	
 };
