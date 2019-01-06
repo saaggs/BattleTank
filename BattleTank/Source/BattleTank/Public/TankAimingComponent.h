@@ -4,8 +4,10 @@
 
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
-class UTankBarrel; // Forward Declaration
+// Forward Declaration
+class UTankBarrel;
 
+// This comment will show up in unreal when adding component
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankAimingComponent : public UActorComponent
 {
