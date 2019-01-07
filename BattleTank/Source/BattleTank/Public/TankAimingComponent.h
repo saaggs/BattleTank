@@ -6,6 +6,7 @@
 #include "TankAimingComponent.generated.h"
 // Forward Declaration
 class UTankBarrel;
+class UTankTurret;
 
 // This comment will show up in unreal when adding component
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -19,11 +20,17 @@ public:
 
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 
+	void SetTurretReference(UTankTurret* TurretToSet);
+
 	void AimAt(FVector OutHitLocation, float LaunchSpeed);
 
 private:
 	UTankBarrel* Barrel = nullptr;
 
+	UTankTurret* Turret = nullptr;
+
 	void MoveBarrelTowards(FVector AimDirection);
+
+	void MoveTurretTowards(FVector AimDirection);
 	
 };
