@@ -9,6 +9,7 @@
 class UTankBarrel; // Forward Declaration to import class
 class UTankTurret;
 class UTankAimingComponent;
+class AProjectile;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -46,5 +47,11 @@ private:
 
 	UPROPERTY(Editanywhere, Category = Firing)
 	float LaunchSpeed = 4000.0; // Find sensible default
+
+	UPROPERTY(Editanywhere, Category = Setup)
+		TSubclassOf<AProjectile> ProjectileBlueprint; // UClass* or pointer to anything.  Alternative http://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/TSubclassOf/ 
+
+	// Local barrel reference for spawning projectile
+	UTankBarrel* Barrel = nullptr;
 		
 };
